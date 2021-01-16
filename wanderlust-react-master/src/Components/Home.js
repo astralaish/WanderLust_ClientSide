@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import "../custom.css";
+import Packages from "./Packages";
 class Home extends Component {
   state = {
     continent: "",
@@ -97,9 +98,9 @@ class Home extends Component {
             </div>
           </div>
         </section>
-        {/* Remove this section later */}
-        <section>
-          <h2 className="text-center my-5 mb-5">Display hotdeals here</h2>
+      
+        <section> 
+          <Packages></Packages>
         </section>
 
         <section id="signup" className="signup-section">

@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import "../index.css";
 import Home from "./Home";
 import Login from "./Login";
+import Register from "./Register";
+import PlannedTrips from "./PlannedTrips";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Packages from "./Packages";
+import SearchPackage from "./SearchPackage";
+import Booking from "./Booking";
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -85,6 +90,11 @@ class NavBar extends Component {
             <Switch>
               <Route exact path="/" component={Home}></Route>
               <Route exact path="/login" component={Login}></Route>
+              <Route exact path="/packages" component={Packages}></Route>
+              <Route       path="/packages/:continent" component={SearchPackage}></Route>
+              <Route       path="/viewBookings" component={PlannedTrips}></Route>
+              <Route exact path="/register" component={Register}></Route>
+              <Route   path="/booking"   component={Booking}></Route>
             </Switch>
           </div>
         </Router>

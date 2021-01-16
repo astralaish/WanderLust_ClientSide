@@ -42,10 +42,16 @@ class Login extends Component {
         window.location.reload();
       })
       .catch(err => {
-        this.setState({
-          successMessage: null,
-          errorMessage: err
-        });
+        if(err.response) {
+          this.setState({
+            successMessage: "",
+            errorMessage: err.response.data.message
+          });
+        } else {
+          this.setState({
+            errorMessage: "Please run the server"
+          }); 
+        }
       });
   };
 
@@ -126,12 +132,13 @@ class Login extends Component {
     if (this.state.register === true) return <Redirect to={"/register"} />;
     else if (this.state.successMessage != "") return <Redirect to={"/"} />;
     return (
-      <div>
+      <div className="masthead2 login-page">
         <div className="row my-5">
           <section className="col"></section>
           <section className="col">
             <form className="form form-horizontal">
               <div className="form-group">
+              <h1>Hey! Wanderer</h1>
                 <span className="p-float-label">
                   <InputText
                     id="contactNumber"
@@ -211,6 +218,9 @@ class Login extends Component {
                 >
                   Register
                 </button>
+                {!this.state.successMessage && <div className="text-danger">
+                  {this.state.errorMessage}
+              </div>}
               </div>
             </form>
           </section>
@@ -222,3 +232,4 @@ class Login extends Component {
 }
 
 export default Login;
+
